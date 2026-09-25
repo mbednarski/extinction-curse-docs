@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Circus of Wayward Wonders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Oswald:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#f6ecd4; --ink:#241a10;
+  --red:#8c1c13; --red-dark:#6b140d; --gold:#a9780a; --gold-light:#d4a72c;
+  --cream:#fdf8ec;
+  --muted:#4a3618;            /* secondary text -- darkened for contrast */
+  --label:"Oswald", "Arial Narrow", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; color:var(--ink);
+  background:var(--parchment);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(169,120,10,.07), transparent 42%),
+    radial-gradient(circle at 80% 0%, rgba(140,28,19,.07), transparent 38%);
+  font-family:"EB Garamond", Georgia, "Times New Roman", serif;
+  font-size:19px; line-height:1.55;
+}
+.page{ max-width:1040px; margin:0 auto; padding:24px 20px 60px; }
+
+/* ---- header ---- */
+.poster-head{
+  text-align:center; padding:34px 16px 30px; margin-bottom:34px;
+  border:3px double var(--red); border-radius:8px;
+  background:
+    repeating-linear-gradient(135deg, rgba(140,28,19,.05) 0 22px, rgba(169,120,10,.05) 22px 44px),
+    var(--cream);
+  box-shadow:0 2px 0 var(--gold), inset 0 0 0 6px rgba(253,248,236,.6);
+}
+.presents{ font-family:var(--label); font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+  font-size:.95rem; color:var(--red); }
+.poster-head h1{
+  font-family:"Alfa Slab One", cursive; font-weight:400;
+  font-size:clamp(2.1rem, 7vw, 4rem); line-height:1.02; margin:.18em 0 .12em;
+  color:var(--red);
+  text-shadow:2px 2px 0 var(--gold-light), 4px 4px 0 rgba(0,0,0,.12);
+}
+.tagline{ font-style:italic; font-size:1.12rem; color:var(--muted); }
+.flourish{ color:var(--gold); letter-spacing:.6em; font-size:1rem; }
+.built{ margin-top:12px; font-size:.9rem; letter-spacing:.06em; color:#6a4f24; text-transform:uppercase; }
+.built .sha{ font-family:ui-monospace,Menlo,Consolas,monospace; background:rgba(169,120,10,.18);
+  padding:1px 7px; border-radius:4px; }
+
+/* ---- section frames ---- */
+.block{ margin:0 0 40px; }
+.block h2{
+  text-align:center; margin:0 0 22px; font-family:var(--label); font-weight:700;
+  font-size:1.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--red-dark);
+  position:relative;
+}
+.block h2 span{ background:var(--parchment); padding:0 18px; position:relative; z-index:1; }
+.block h2:before{ content:""; position:absolute; left:0; right:0; top:50%;
+  border-top:2px solid var(--gold); z-index:0; }
+.lead{ text-align:center; font-style:italic; color:var(--muted); margin:-6px 0 18px; font-size:1.05rem; }
+.empty{ text-align:center; font-style:italic; color:var(--muted); padding:18px; font-size:1.05rem; }
+
+/* ---- medallions ---- */
+.medallions{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; }
+.medallion{
+  text-align:center; padding:16px 12px; border:2px solid var(--gold);
+  border-radius:10px; background:var(--cream);
+  box-shadow:inset 0 0 0 3px rgba(169,120,10,.12), 0 1px 3px rgba(0,0,0,.12);
+}
+.medallion-label{ font-family:var(--label); font-weight:600; text-transform:uppercase; letter-spacing:.07em;
+  font-size:.92rem; color:var(--red); }
+.medallion-value{ font-family:"Alfa Slab One",cursive; font-size:2rem; color:var(--ink); line-height:1.1; margin:.08em 0; }
+.medallion-sub{ font-size:.92rem; color:var(--muted); }
+
+/* ---- performers ---- */
+.performers{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
+.performer{
+  border:2px solid var(--red); border-radius:10px; padding:14px 16px; background:var(--cream);
+  box-shadow:0 1px 3px rgba(0,0,0,.12);
+}
+.perf-head{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.perf-emoji{ font-size:1.4rem; }
+.perf-name{ font-family:var(--label); font-weight:600; font-size:1.22rem; color:var(--red-dark); }
+.perf-tag{ margin-left:auto; font-family:var(--label); font-weight:500; font-size:.78rem; text-transform:uppercase;
+  letter-spacing:.06em; background:var(--red); color:var(--cream); padding:3px 9px; border-radius:20px; }
+.perf-flavor{ font-style:italic; color:var(--muted); margin:6px 0 8px; font-size:1rem; }
+.perf-stats{ display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.perf-stats .stat{ font-size:.92rem; color:var(--ink); background:rgba(169,120,10,.15);
+  border:1px solid rgba(169,120,10,.45); padding:2px 9px; border-radius:5px; }
+.perf-hook{ margin-top:9px; font-size:.95rem; color:var(--muted); border-top:1px dashed var(--gold); padding-top:7px; }
+
+/* ---- services ---- */
+.services-list{ display:grid; gap:18px; }
+.service{ border:2px solid var(--red); border-radius:10px; padding:16px 18px; background:var(--cream);
+  box-shadow:0 1px 3px rgba(0,0,0,.12); }
+.svc-name{ font-family:var(--label); font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+  font-size:1.25rem; color:var(--red-dark); }
+.svc-flavor{ font-style:italic; color:var(--muted); margin:6px 0 10px; font-size:1.04rem; }
+.svc-stats{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom:12px; }
+.svc-stat{ font-size:.95rem; color:var(--ink); background:rgba(169,120,10,.15);
+  border:1px solid rgba(169,120,10,.45); padding:3px 10px; border-radius:5px; }
+.svc-stat b{ color:var(--red-dark); }
+.svc-book{ margin-top:4px; }
+.svc-book td:last-child{ font-weight:600; color:var(--red); white-space:nowrap; }
+
+/* ---- upgrades ---- */
+.owned-row{ text-align:center; margin-bottom:18px; }
+.owned-title{ font-family:var(--label); font-weight:600; text-transform:uppercase; font-size:.95rem;
+  letter-spacing:.07em; color:var(--red); }
+.owned-chip{ display:inline-block; background:var(--red); color:var(--cream); padding:3px 11px; border-radius:20px;
+  margin:3px; font-size:.95rem; }
+.empty-inline{ font-style:italic; color:var(--muted); }
+.shop-sub{ font-family:var(--label); font-weight:600; text-transform:uppercase; letter-spacing:.07em;
+  font-size:1.15rem; color:var(--red-dark); margin:22px 0 12px; }
+.upgrades{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; }
+.upgrade{ border:2px solid var(--gold); border-radius:9px; padding:12px 14px; background:var(--cream);
+  display:flex; flex-direction:column; gap:6px; }
+.upgrade.is-owned{ opacity:.7; border-style:dashed; }
+.upgrade.is-locked{ background:repeating-linear-gradient(45deg,#f0e6c8 0 8px,#e8dab6 8px 16px); }
+.upgrade.is-afford{ border-color:var(--red); box-shadow:0 0 0 2px rgba(140,28,19,.12); }
+.up-head{ display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+.up-name{ font-family:var(--label); font-weight:600; font-size:1.12rem; color:var(--ink); }
+.up-cost{ font-weight:700; color:var(--red); white-space:nowrap; }
+.up-effect{ font-size:1rem; color:var(--ink); }
+.up-badges{ margin-top:auto; display:flex; flex-wrap:wrap; gap:5px; }
+.badge{ font-family:var(--label); font-weight:500; font-size:.78rem; text-transform:uppercase;
+  letter-spacing:.04em; padding:2px 9px; border-radius:20px; }
+.badge.owned{ background:#4a3618; color:var(--cream); }
+.badge.afford{ background:var(--red); color:var(--cream); }
+.badge.locked{ background:#6a4f24; color:var(--cream); }
+.badge.short{ background:#c2b187; color:#2e2410; }
+.badge.tier{ background:rgba(169,120,10,.28); color:#4a3618; }
+.badge.temp{ background:rgba(140,28,19,.18); color:var(--red-dark); }
+
+/* ---- events ---- */
+.events{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; }
+.event{ display:flex; gap:12px; align-items:flex-start; border:1px solid var(--gold); border-radius:9px;
+  padding:11px 13px; background:var(--cream); }
+.die{ flex:0 0 auto; width:38px; height:38px; display:grid; place-items:center; border-radius:8px;
+  background:var(--red); color:var(--cream); font-family:"Alfa Slab One",cursive; font-size:1.15rem; }
+.event-name{ display:block; font-family:var(--label); font-weight:600; font-size:1.05rem; color:var(--red-dark); }
+.event-desc{ font-size:.98rem; color:var(--ink); }
+
+/* ---- ledger ---- */
+.ledger{ width:100%; border-collapse:collapse; background:var(--cream); border:2px solid var(--gold); }
+.ledger th{ background:var(--red); color:var(--cream); font-family:var(--label); font-weight:600;
+  text-transform:uppercase; letter-spacing:.04em; font-size:.92rem; padding:10px; }
+.ledger td{ padding:9px 10px; border-top:1px solid rgba(169,120,10,.4); font-size:1rem; }
+.ledger tr:nth-child(even) td{ background:rgba(169,120,10,.06); }
+
+/* ---- footer ---- */
+.foot{ text-align:center; color:var(--muted); margin-top:30px; font-style:italic; }
+.foot .flourish{ margin-bottom:8px; }
+
+@media (max-width:540px){
+  body{ font-size:18px; }
+  .medallions{ grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="poster-head">
+    <div class="flourish">★ ☆ ★</div>
+    <div class="presents">The House Troupe Presents</div>
+    <h1>Circus of Wayward Wonders</h1>
+    <div class="tagline">A Living Bill of Marvels, Wonders &amp; Daring Deeds</div>
+    <div class="built">as of 2026-09-25 09:53 UTC · <span class="sha">eddb63d</span></div>
+  </header>
+
+  <section class="block">
+    <h2><span>State of the Circus</span></h2>
+    <div class="medallions"><div class="medallion"><div class="medallion-label">Prestige</div><div class="medallion-value">4</div><div class="medallion-sub">Tier 1 · Villages — an unknown troupe</div></div>
+<div class="medallion"><div class="medallion-label">Act DC</div><div class="medallion-value">16</div><div class="medallion-sub">difficulty per act</div></div>
+<div class="medallion"><div class="medallion-label">Coffers</div><div class="medallion-value">80 gp</div><div class="medallion-sub">circus funds</div></div>
+<div class="medallion"><div class="medallion-label">Morale</div><div class="medallion-value">9</div><div class="medallion-sub">thriving · +1 to acts</div></div>
+<div class="medallion"><div class="medallion-label">Acclaim</div><div class="medallion-value">0</div><div class="medallion-sub">2 → +1 Prestige</div></div>
+<div class="medallion"><div class="medallion-label">Hype Cap</div><div class="medallion-value">8</div><div class="medallion-sub">tent capacity</div></div>
+<div class="medallion"><div class="medallion-label">Shows Run</div><div class="medallion-value">0</div><div class="medallion-sub">performances given</div></div>
+<div class="medallion"><div class="medallion-label">Troupe Cap</div><div class="medallion-value">Lv 9</div><div class="medallion-sub">performer level limit</div></div></div>
+  </section>
+
+  <section class="block">
+    <h2><span>The Performers</span></h2>
+    <div class="performers"><div class="performer"><div class="perf-head"><span class="perf-emoji">🤸</span><span class="perf-name">Rodzina Kanbali</span><span class="perf-tag">Acrobatics</span></div><div class="perf-flavor">tumblers</div><div class="perf-stats"><span class="stat"><b>Lv 1</b></span><span class="stat">Act +8</span><span class="stat">Practice 2/3</span></div><div class="perf-hook">family troupe of tumblers; add story threads</div></div>
+<div class="performer"><div class="perf-head"><span class="perf-emoji">🗡️</span><span class="perf-name">Krasnoludy</span><span class="perf-tag">Daring</span></div><div class="perf-flavor">danger / strongman feats</div><div class="perf-stats"><span class="stat"><b>Lv 1</b></span><span class="stat">Act +10</span><span class="stat">Practice 0/3</span></div><div class="perf-hook">dwarven feats of strength; add story threads</div></div>
+<div class="performer"><div class="perf-head"><span class="perf-emoji">🗡️</span><span class="perf-name">Mordaine</span><span class="perf-tag">Daring</span></div><div class="perf-flavor">danger / escape artist</div><div class="perf-stats"><span class="stat"><b>Lv 1</b></span><span class="stat">Act +8</span><span class="stat">Practice 0/3</span></div><div class="perf-hook">escape act (Thievery to slip free, Fortitude to endure); add story threads</div></div>
+<div class="performer"><div class="perf-head"><span class="perf-emoji">🗡️</span><span class="perf-name">Fidget</span><span class="perf-tag">Daring</span></div><div class="perf-flavor">danger / aerial acrobatics</div><div class="perf-stats"><span class="stat"><b>Lv 5</b></span><span class="stat">Act +9</span><span class="stat">Practice 1/3</span></div><div class="perf-hook">a seasoned act (one of two above the rookie pack); add story threads</div></div>
+<div class="performer"><div class="perf-head"><span class="perf-emoji">🦁</span><span class="perf-name">Alex</span><span class="perf-tag">Beast</span></div><div class="perf-flavor">Nature / animal act</div><div class="perf-stats"><span class="stat"><b>Lv 1</b></span><span class="stat">Act +7</span><span class="stat">Practice 0/3</span></div></div>
+<div class="performer"><div class="perf-head"><span class="perf-emoji">🦁</span><span class="perf-name">Eliza</span><span class="perf-tag">Beast</span></div><div class="perf-flavor">animal tamer, fierce flair</div><div class="perf-stats"><span class="stat"><b>Lv 1</b></span><span class="stat">Act +7</span><span class="stat">Practice 0/3</span></div></div>
+<div class="performer"><div class="perf-head"><span class="perf-emoji">🔥</span><span class="perf-name">Flamboni</span><span class="perf-tag">Spectacle</span></div><div class="perf-flavor">fire-eater / showmanship</div><div class="perf-stats"><span class="stat"><b>Lv 1</b></span><span class="stat">Act +7</span><span class="stat">Practice 1/3</span></div></div>
+<div class="performer"><div class="perf-head"><span class="perf-emoji">🗡️</span><span class="perf-name">Flynn</span><span class="perf-tag">Daring</span></div><div class="perf-flavor">risky stunt act</div><div class="perf-stats"><span class="stat"><b>Lv 7</b></span><span class="stat">Act +16</span><span class="stat">Practice 0/3</span></div></div>
+<div class="performer"><div class="perf-head"><span class="perf-emoji">🦁</span><span class="perf-name">Evora &amp; Gigi</span><span class="perf-tag">Beast</span></div><div class="perf-stats"><span class="stat"><b>Lv 8</b></span><span class="stat">Act +19</span><span class="stat">Practice 0/3</span></div></div>
+<div class="performer"><div class="perf-head"><span class="perf-emoji">🪽</span><span class="perf-name">Andrzej</span><span class="perf-tag">Aerial</span></div><div class="perf-stats"><span class="stat"><b>Lv 8</b></span><span class="stat">Act +16</span><span class="stat">Practice 0/3</span></div></div></div>
+  </section>
+
+  <section class="block">
+    <h2><span>Troupe Services</span></h2>
+    <p class="lead">The troupe looks after its own — these wares are forged with circus coin, for the road.</p>
+    <div class="services-list"><div class="service"><div class="svc-name">⚗️ Lulu&#x27;s Workshop — Alchemy</div><div class="svc-flavor">Lulu Brightcoil, the troupe&#x27;s gnome alchemist — she keeps the fireworks lit and the medicine chest stocked. Give her a formula and a few quiet days between towns and she&#x27;ll turn circus coin into elixirs, bombs, and tinctures for the road.</div><div class="svc-stats"><span class="svc-stat"><b>Level:</b> 7</span><span class="svc-stat"><b>Crafting:</b> +16 (Expert)</span><span class="svc-stat"><b>Craft cap:</b> any consumable she has a formula for, item level ≤ 7 (and never above party level)</span><span class="svc-stat"><b>Cost:</b> the circus coffers pay the materials — half the item&#x27;s Price; Lulu&#x27;s labour is free (she&#x27;s troupe)</span><span class="svc-stat"><b>Time:</b> one downtime cycle per batch (between two shows)</span><span class="svc-stat"><b>Funding:</b> GM discretion — no hard GP cap, but every coin comes out of circus GP, and she only makes consumables</span></div><table class="ledger svc-book"><thead><tr><th>Item</th><th>Lvl</th><th>Price</th><th>Circus pays</th><th>AoN</th></tr></thead><tbody><tr><td>Lesser Elixir of Life</td><td>5</td><td>20 gp</td><td>10 gp</td><td>AoN</td></tr><tr><td>Giant Scorpion Venom</td><td>6</td><td>40 gp</td><td>20 gp</td><td>AoN</td></tr><tr><td>Pressure Bomb (Moderate)</td><td>3</td><td>12 gp</td><td>6 gp</td><td>AoN</td></tr><tr><td>Alchemist&#x27;s Fire (Moderate)</td><td>3</td><td>10 gp</td><td>5 gp</td><td>AoN</td></tr><tr><td>Darkvision Elixir (Moderate)</td><td>4</td><td>11 gp</td><td>6 gp</td><td>AoN</td></tr></tbody></table></div></div>
+  </section>
+
+  <section class="block">
+    <h2><span>The Upgrade Wagon</span></h2>
+    <div class="owned-row"><span class="owned-title">Owned:</span> <span class="empty-inline">nothing yet — the shop is wide open.</span></div>
+<h3 class="shop-sub">Permanent</h3><div class="upgrades">
+<div class="upgrade is-afford"><div class="up-head"><span class="up-name">Big Top</span><span class="up-cost">40 gp</span></div><div class="up-effect">Hype cap 8 → 12</div><div class="up-badges"><span class="badge afford">Affordable</span></div></div>
+<div class="upgrade is-locked"><div class="up-head"><span class="up-name">Huge Tent</span><span class="up-cost">100 gp</span></div><div class="up-effect">Hype cap → 16</div><div class="up-badges"><span class="badge tier">Upgrade path</span><span class="badge locked">Needs Prestige 10</span></div></div>
+<div class="upgrade is-locked"><div class="up-head"><span class="up-name">Massive Tent</span><span class="up-cost">300 gp</span></div><div class="up-effect">Hype cap → 24</div><div class="up-badges"><span class="badge tier">Upgrade path</span><span class="badge locked">Needs Prestige 15</span></div></div>
+<div class="upgrade is-afford"><div class="up-head"><span class="up-name">Spotlights</span><span class="up-cost">40 gp</span></div><div class="up-effect">+1 Prestige (permanent); unlocks Lighting flavor</div><div class="up-badges"><span class="badge afford">Affordable</span></div></div>
+<div class="upgrade is-locked"><div class="up-head"><span class="up-name">Seating (bleachers)</span><span class="up-cost">50 gp</span></div><div class="up-effect">Start each show at Delivery +1</div><div class="up-badges"><span class="badge locked">Needs Prestige 5</span></div></div>
+<div class="upgrade is-locked"><div class="up-head"><span class="up-name">Acoustics</span><span class="up-cost">30 gp</span></div><div class="up-effect">+1 to one Music act per show</div><div class="up-badges"><span class="badge locked">Needs Prestige 5</span></div></div>
+<div class="upgrade is-afford"><div class="up-head"><span class="up-name">Comfortable Wagons</span><span class="up-cost">60 gp</span></div><div class="up-effect">Morale cap → 12; rest restores +1 extra</div><div class="up-badges"><span class="badge afford">Affordable</span></div></div>
+<div class="upgrade is-afford"><div class="up-head"><span class="up-name">Training Grounds</span><span class="up-cost">80 gp</span></div><div class="up-effect">+1 Practice whenever a performer headlines; can raise a crit act to 3 Practice</div><div class="up-badges"><span class="badge afford">Affordable</span></div></div>
+<div class="upgrade is-afford"><div class="up-head"><span class="up-name">Safety Rigging</span><span class="up-cost">20 gp</span></div><div class="up-effect">No injuries from Mishaps (still lose Delivery)</div><div class="up-badges"><span class="badge afford">Affordable</span></div></div>
+<div class="upgrade is-afford"><div class="up-head"><span class="up-name">Watermarked Tickets</span><span class="up-cost">50 gp</span></div><div class="up-effect">Payout treats Prestige as +2</div><div class="up-badges"><span class="badge afford">Affordable</span></div></div>
+<div class="upgrade is-locked"><div class="up-head"><span class="up-name">Menagerie</span><span class="up-cost">100 gp</span></div><div class="up-effect">Unlocks Beast acts &amp; beast-performer recruiting</div><div class="up-badges"><span class="badge locked">Needs Prestige 6</span></div></div>
+</div>
+<h3 class="shop-sub">Temporary</h3><div class="upgrades">
+<div class="upgrade is-afford"><div class="up-head"><span class="up-name">Merchandise Push</span><span class="up-cost">20 gp</span></div><div class="up-effect">Next show&#x27;s payout +50% (buy once per show)</div><div class="up-badges"><span class="badge temp">Per-show</span><span class="badge afford">Affordable</span></div></div>
+</div>
+  </section>
+
+  <section class="block">
+    <h2><span>Show History</span></h2>
+    <p class="empty">The big top hasn't opened yet — no shows on the books. Check back after opening night!</p>
+  </section>
+
+  <section class="block">
+    <h2><span>Twists of Fate</span></h2>
+    <p class="lead">Every show, the fates roll a die. Anything can happen under the big top:</p>
+    <div class="events"><div class="event"><span class="die">1</span><div class="event-body"><span class="event-name">Bad weather</span><span class="event-desc">−1 to all acts; after calculating the usual result payout, double it</span></div></div>
+<div class="event"><span class="die">2</span><div class="event-body"><span class="event-name">Hecklers</span><span class="event-desc">−2 to one random act (negated if a PC is Barker or Ringmaster)</span></div></div>
+<div class="event"><span class="die">3</span><div class="event-body"><span class="event-name">Equipment malfunction</span><span class="event-desc">your highest-level performer is unavailable for this show (GM breaks ties)</span></div></div>
+<div class="event"><span class="die">4</span><div class="event-body"><span class="event-name">Overflowing crowd</span><span class="event-desc">+3 Hype cap; add `2 × current Prestige` gp to the final payout</span></div></div>
+<div class="event"><span class="die">5</span><div class="event-body"><span class="event-name">Stars align</span><span class="event-desc">+2 to all acts</span></div></div>
+<div class="event"><span class="die">6</span><div class="event-body"><span class="event-name">Tough critics</span><span class="event-desc">Success needs Delivery ≥ Hype+1 tonight; a Triumph pays ×3 instead of ×2</span></div></div></div>
+  </section>
+
+  <footer class="foot">
+    <div class="flourish">★ ☆ ★</div>
+    <p>Roll up, roll up! Generated automatically from the campaign records.</p>
+  </footer>
+</div>
+</body>
+</html>
